@@ -1,0 +1,55 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Pacifico&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    --header-background: gray;
+    --sidebar-background: lightgray;
+    --font-main: rgb(255, 255, 255);
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+}
+
+header {
+    height: 72px;
+    font-size: 36px;
+    font-weight: 600;
+    font-family: 'Pacifico', cursive;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    color: var(--font-main);
+    background-color: var(--header-background);
+}
+
+header img {
+    filter: invert(100%) sepia(0%) saturate(7488%) hue-rotate(195deg) brightness(98%) contrast(103%);
+}
+
+.sidebar-body-wrapper {
+    display: flex;
+    flex: 1;
+}
+
+.sidebar {
+    font-size: 24px;
+    font-weight: 600;
+    width: 20vw;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 8px;
+    color: var(--font-main);
+    background-color: var(--sidebar-background);
+}
+
+.body {
+    flex: 1;
+}
