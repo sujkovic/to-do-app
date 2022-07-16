@@ -4,8 +4,9 @@
 * {
     margin: 0;
     padding: 0;
-    --header-background: gray;
-    --sidebar-background: lightgray;
+    --header-background: rgb(36, 58, 129);
+    --sidebar-background: rgb(99, 99, 99);
+    --body-background: rgb(37, 37, 37);
     --font-main: rgb(255, 255, 255);
 }
 
@@ -41,15 +42,28 @@ header img {
 .sidebar {
     font-size: 24px;
     font-weight: 600;
-    width: 20vw;
+    width: 16vw;
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 8px;
+    padding: 20px 8px;
     color: var(--font-main);
     background-color: var(--sidebar-background);
 }
 
 .body {
     flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 30px 100px;
+    background-color: var(--body-background);
+}
+
+.bodyProjectTitle {
+    
+}
+
+.bodyTaskTitle {
+    font-size: 36px;
 }

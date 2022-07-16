@@ -6,7 +6,7 @@ module.exports = {
   entry: './src/main.js',
   plugins: [
     new HtmlWebpackPlugin({
-        title: 'Output Management',
+        title: 'To Do',
     }),
   ],
   output: {
