@@ -11,11 +11,11 @@ class Task {
         this.domElementWrapper = createDomElement('div', 'bodyTaskWrapper');
         this.domElementTitle = createDomElement('div', 'bodyTaskTitle', `${this.title}`);
         this.domElementDue = createDomElement('div', 'bodyTaskDue', `${this.due}`);
-        this.domElementDesc = createDomElement('div', 'bodyTaskDesc', `${this.title}`);
+        this.domElementDesc = createDomElement('div', 'bodyTaskDesc', `${this.desc}`);
         this.domElementWrapper.append(this.domElementTitle);
-        this.domElementWrapper.append(this.domElementDue);
         this.domElementWrapper.append(this.domElementDesc);
-        document.querySelector('.body').append(this.domElementWrapper);
+        this.domElementWrapper.append(this.domElementDue);
+        document.querySelector('.bodyProjectWrapper').append(this.domElementWrapper);
     }
 
 }

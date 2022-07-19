@@ -6,7 +6,8 @@
     padding: 0;
     --header-background: rgb(36, 58, 129);
     --sidebar-background: rgb(99, 99, 99);
-    --body-background: rgb(37, 37, 37);
+    --body-background: rgb(255, 254, 254);
+    --task-background: rgb(170, 170, 170);
     --font-main: rgb(255, 255, 255);
 }
 
@@ -55,15 +56,36 @@ header img {
     flex: 1;
     display: flex;
     flex-direction: column;
-    align-items: center;
-    padding: 30px 100px;
+    padding: 30px 50px;
     background-color: var(--body-background);
 }
 
-.bodyProjectTitle {
-    
+.bodyProjectWrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+
+}
+
+.bodyTaskWrapper {
+    display: flex;
+    align-items: center;
+    padding: 16px;
+    gap: 10px;
+    background-color: var(--task-background);
+    border-radius: 12px;
+    height: 50px;
 }
 
 .bodyTaskTitle {
+    font-size: 24px
+}
+
+.bodyTaskDesc {
+    flex: 1;
+}
+
+.bodyProjectTitle {
     font-size: 36px;
+    padding-bottom: 26px;
 }

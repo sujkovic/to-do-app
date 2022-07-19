@@ -1,4 +1,5 @@
 import createDomElement from './createDomElement';
+import task from './task';
 
 class Project {
     constructor(name) {
@@ -13,10 +14,16 @@ class Project {
     }
     renderToBody = () => {
         this.projectWrapper = createDomElement('div', 'bodyProjectWrapper');
-        this.projectTitle = createDomElement('div', 'bodyProjectTitle' `${this.name}`);
+        this.projectTitle = createDomElement('div', 'bodyProjectTitle', `${this.name}`);
+        document.querySelector('.body').append(this.projectTitle);
+        document.querySelector('.body').append(this.projectWrapper);
         for (let i = 0; i < this.projects.length; i++) {
-            this.projects[i].renderToBody;
+            this.projects[i].renderToBody();
         }
+    }
+    renderToSideBar = () => {
+        this.projectSidebarWrapper = createDomElement('div', 'sidebarProjectWrapper', `${this.name}`);
+
     }
 }
 
