@@ -5,7 +5,7 @@ class Task {
         this.title = title;
         this.desc = desc;
         this.due = due;
-        this.priority = priority;
+        this.priority = parseInt(priority);
     }
     renderToBody = () => {
         this.domElementWrapper = createDomElement('div', 'bodyTaskWrapper');

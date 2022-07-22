@@ -7,7 +7,7 @@ const initHtml = () => {
     header();
     document.querySelector('body').append(createDomElement('div', 'sidebar-body-wrapper'));
     sidebar();
-    body();
+    //body();
 }
 
 export default initHtml;

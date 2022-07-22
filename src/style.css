@@ -105,6 +105,7 @@ header img {
 
 .addProjectBtn:hover {
     background-color: rgb(42, 42, 87);
+    cursor: pointer;
 }
 
 .body {
@@ -119,7 +120,8 @@ header img {
     display: flex;
     flex-direction: column;
     gap: 10px;
-
+    max-height: 70vh;
+    overflow: auto;
 }
 
 .bodyTaskWrapper {
@@ -143,4 +145,22 @@ header img {
 .bodyProjectTitle {
     font-size: 36px;
     padding-bottom: 26px;
+}
+
+.addTaskBtn {
+    height: 50px;
+    width: 200px;
+    align-self: center;
+    margin-top: 10px;
+    align-self: center;
+    border: none;
+    border-radius: 8px;
+    font-size: 18px;
+    background-color: var(--header-background);
+    color: var(--font-main);
+}
+
+.addTaskBtn:hover {
+    cursor: pointer;
+    background-color: rgb(42, 42, 87);
 }

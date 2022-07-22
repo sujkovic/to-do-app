@@ -1,6 +1,5 @@
 import createDomElement from './createDomElement';
 import Task from './task';
-import task from './task';
 import Trashcan from './trashcan.png';
 
 class Project {
@@ -15,11 +14,13 @@ class Project {
         this.project = this.project.splice(index, 1);
     }
     renderToBody = () => {
+        document.querySelector('.sidebar-body-wrapper').append(createDomElement('div', 'body'));
         this.projectWrapper = createDomElement('div', 'bodyProjectWrapper');
         this.projectTitle = createDomElement('div', 'bodyProjectTitle', `${this.name}`);
         document.querySelector('.body').append(this.projectTitle);
         document.querySelector('.body').append(this.projectWrapper);
         for (let i = 0; i < this.project.length; i++) {
+            console.log(this.project[i].priority);
             if (this.project[i].priority === 1) {
                 this.project[i].renderToBody();
             }
@@ -34,12 +35,11 @@ class Project {
                 this.project[i].renderToBody();
             }
         }
+
         this.renderAddTaskBtn();
     }
     unRenderBody = () => {
-        this.projectWrapper.remove();
-        this.projectTitle.remove();
-        this.addTaskBtn.remove();
+        document.querySelector('.body').remove();
     }
     renderToSideBar = () => {
         this.sidebarProject = createDomElement('div', 'sidebarProject',);
@@ -47,6 +47,11 @@ class Project {
         this.renderTrashcan();
         this.sidebarProject.append(this.sidebarProjectName);
         this.sidebarProject.append(this.trashcan);
+        this.sidebarProject.addEventListener('click', () => {
+            this.unRenderBody();
+            this.renderToBody();
+            window.curProject = this.project;
+        });
         document.querySelector('.notebookWrapper').append(this.sidebarProject);
     }
     renderTrashcan = () => {
@@ -69,11 +74,14 @@ class Project {
     renderAddTaskBtn = () => {
         this.addTaskBtn = createDomElement('button', 'addTaskBtn', 'Add Task');
         this.addTaskBtn.addEventListener('click', () => {
+            console.log(`length before adding: ${this.project.length}`);
             let myTask = new Task(prompt('Enter Task Title'), prompt('Enter description'), prompt('Enter due date'), prompt('Enter priority (1-3)'));
-            this.project.addTask(myTask);
+            this.addTask(myTask);
             this.unRenderBody();
             this.renderToBody();
-        });
+            console.log(`length after adding: ${this.project.length}`);
+
+        }, false);
         document.querySelector('.body').append(this.addTaskBtn);
     }
 }
