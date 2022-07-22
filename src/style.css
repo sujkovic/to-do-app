@@ -4,11 +4,14 @@
 * {
     margin: 0;
     padding: 0;
-    --header-background: rgb(36, 58, 129);
-    --sidebar-background: rgb(99, 99, 99);
+    --header-background: rgb(60, 69, 98);
+    --sidebar-background: rgb(57, 57, 57);
     --body-background: rgb(255, 254, 254);
-    --task-background: rgb(170, 170, 170);
+    --task-background: rgb(109, 114, 132);
+    --task-hover-background: rgb(117, 121, 137);
     --font-main: rgb(255, 255, 255);
+    --btn-hover: rgb(77, 87, 118);
+    --btn-click: rgb(32, 32, 57);
 }
 
 body {
@@ -104,8 +107,12 @@ header img {
 }
 
 .addProjectBtn:hover {
-    background-color: rgb(42, 42, 87);
+    background-color: var(--btn-hover);
     cursor: pointer;
+}
+
+.addProjectBtn:active {
+    background-color: var(--btn-click);
 }
 
 .body {
@@ -125,20 +132,23 @@ header img {
 }
 
 .bodyTaskWrapper {
+    font-size: 18px;
     display: flex;
     align-items: center;
     padding: 16px;
     gap: 10px;
     background-color: var(--task-background);
+    color: var(--font-main);
     border-radius: 12px;
-    height: 50px;
+    height: 36px;
+}
+
+.bodyTaskWrapper:hover {
+    background-color: var(--task-hover-background);
 }
 
 .bodyTaskTitle {
-    font-size: 24px
-}
-
-.bodyTaskDesc {
+    font-size: 22px;
     flex: 1;
 }
 
@@ -162,5 +172,9 @@ header img {
 
 .addTaskBtn:hover {
     cursor: pointer;
-    background-color: rgb(42, 42, 87);
+    background-color: var(--btn-hover);
+}
+
+.addTaskBtn:active {
+    background-color: var(--btn-click);
 }

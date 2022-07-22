@@ -10,8 +10,8 @@ class Project {
     addTask = (task) => {
         this.project.push(task);
     }
-    removeTask = (index) => {
-        this.project = this.project.splice(index, 1);
+    removeTask = (name) => {
+        this.project = this.project.filter(task => task.title !== name);
     }
     renderToBody = () => {
         document.querySelector('.sidebar-body-wrapper').append(createDomElement('div', 'body'));
@@ -20,7 +20,6 @@ class Project {
         document.querySelector('.body').append(this.projectTitle);
         document.querySelector('.body').append(this.projectWrapper);
         for (let i = 0; i < this.project.length; i++) {
-            console.log(this.project[i].priority);
             if (this.project[i].priority === 1) {
                 this.project[i].renderToBody();
             }
@@ -50,7 +49,7 @@ class Project {
         this.sidebarProject.addEventListener('click', () => {
             this.unRenderBody();
             this.renderToBody();
-            window.curProject = this.project;
+            window.curProject = this;
         });
         document.querySelector('.notebookWrapper').append(this.sidebarProject);
     }
@@ -69,18 +68,16 @@ class Project {
         this.trashcan.addEventListener('click', () => {
             this.sidebarProject.remove();
             window.notebook.removeProject(this.name);
-        })
+        });
     }
     renderAddTaskBtn = () => {
         this.addTaskBtn = createDomElement('button', 'addTaskBtn', 'Add Task');
         this.addTaskBtn.addEventListener('click', () => {
             console.log(`length before adding: ${this.project.length}`);
-            let myTask = new Task(prompt('Enter Task Title'), prompt('Enter description'), prompt('Enter due date'), prompt('Enter priority (1-3)'));
+            let myTask = new Task(prompt('Enter Task Title'), prompt('Enter due date'), prompt('Enter priority (1-3)'));
             this.addTask(myTask);
             this.unRenderBody();
             this.renderToBody();
-            console.log(`length after adding: ${this.project.length}`);
-
         }, false);
         document.querySelector('.body').append(this.addTaskBtn);
     }
