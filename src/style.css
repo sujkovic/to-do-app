@@ -41,15 +41,70 @@ header img {
 }
 
 .sidebar {
-    font-size: 24px;
+    font-size: 28px;
     font-weight: 600;
     width: 16vw;
+    gap: 32px;
     display: flex;
     flex-direction: column;
-    align-items: center;
     padding: 20px 8px;
     color: var(--font-main);
     background-color: var(--sidebar-background);
+}
+
+.sidebarTitle {
+    align-self: center;
+}
+
+.notebookWrapper {
+    font-weight: 500;
+    font-size: 24px;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    padding: 8px 8px;
+}
+
+.sidebarProject {
+    display: flex;
+    justify-content: space-between;
+}
+
+.sidebarProject:hover {
+    cursor: pointer;
+    font-size: 26px;
+    color: rgb(198, 198, 198);
+}
+
+.trashcanBtn {
+    opacity: 0;
+    height: 32px;
+}
+
+.trashcanBtnActive {
+    opacity: 1;
+    filter: invert(100%) sepia(0%) saturate(11%) hue-rotate(270deg) brightness(106%) contrast(103%);
+}
+
+.trashcanBtnActive:hover {
+    filter: invert(63%) sepia(0%) saturate(2%) hue-rotate(158deg) brightness(98%) contrast(88%);
+}
+
+.addProjectBtn {
+    align-self: center;
+    height: 40px;
+    width: 75%;
+    margin-bottom: 10px;
+    border: none;
+    border-radius: 8px;
+    font-size: 18px;
+    background-color: var(--header-background);
+    color: var(--font-main);
+}
+
+.addProjectBtn:hover {
+    background-color: rgb(42, 42, 87);
 }
 
 .body {

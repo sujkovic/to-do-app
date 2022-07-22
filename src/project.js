@@ -1,29 +1,80 @@
 import createDomElement from './createDomElement';
+import Task from './task';
 import task from './task';
+import Trashcan from './trashcan.png';
 
 class Project {
     constructor(name) {
         this.name = name;
-        this.projects = [];
+        this.project = [];
     }
     addTask = (task) => {
-        this.projects.push(task);
+        this.project.push(task);
     }
     removeTask = (index) => {
-        this.projects = this.projects.splice(index, 1);
+        this.project = this.project.splice(index, 1);
     }
     renderToBody = () => {
         this.projectWrapper = createDomElement('div', 'bodyProjectWrapper');
         this.projectTitle = createDomElement('div', 'bodyProjectTitle', `${this.name}`);
         document.querySelector('.body').append(this.projectTitle);
         document.querySelector('.body').append(this.projectWrapper);
-        for (let i = 0; i < this.projects.length; i++) {
-            this.projects[i].renderToBody();
+        for (let i = 0; i < this.project.length; i++) {
+            if (this.project[i].priority === 1) {
+                this.project[i].renderToBody();
+            }
         }
+        for (let i = 0; i < this.project.length; i++) {
+            if (this.project[i].priority === 2) {
+                this.project[i].renderToBody();
+            }
+        }
+        for (let i = 0; i < this.project.length; i++) {
+            if (this.project[i].priority === 3) {
+                this.project[i].renderToBody();
+            }
+        }
+        this.renderAddTaskBtn();
+    }
+    unRenderBody = () => {
+        this.projectWrapper.remove();
+        this.projectTitle.remove();
+        this.addTaskBtn.remove();
     }
     renderToSideBar = () => {
-        this.projectSidebarWrapper = createDomElement('div', 'sidebarProjectWrapper', `${this.name}`);
-
+        this.sidebarProject = createDomElement('div', 'sidebarProject',);
+        this.sidebarProjectName = createDomElement('div', 'sidebarProjectName', `${this.name}`);
+        this.renderTrashcan();
+        this.sidebarProject.append(this.sidebarProjectName);
+        this.sidebarProject.append(this.trashcan);
+        document.querySelector('.notebookWrapper').append(this.sidebarProject);
+    }
+    renderTrashcan = () => {
+        this.trashcan = new Image();
+        this.trashcan.src = Trashcan;
+        this.trashcan.classList.add('trashcanBtn');
+        this.trashcan.classList.add('trashcanBtnActive');
+        this.trashcan.classList.toggle('trashcanBtnActive');
+        this.sidebarProject.addEventListener('mouseenter', () => {
+            this.trashcan.classList.toggle('trashcanBtnActive');
+        });
+        this.sidebarProject.addEventListener('mouseleave', () => {
+            this.trashcan.classList.toggle('trashcanBtnActive');
+        });
+        this.trashcan.addEventListener('click', () => {
+            this.sidebarProject.remove();
+            window.notebook.removeProject(this.name);
+        })
+    }
+    renderAddTaskBtn = () => {
+        this.addTaskBtn = createDomElement('button', 'addTaskBtn', 'Add Task');
+        this.addTaskBtn.addEventListener('click', () => {
+            let myTask = new Task(prompt('Enter Task Title'), prompt('Enter description'), prompt('Enter due date'), prompt('Enter priority (1-3)'));
+            this.project.addTask(myTask);
+            this.unRenderBody();
+            this.renderToBody();
+        });
+        document.querySelector('.body').append(this.addTaskBtn);
     }
 }
 
