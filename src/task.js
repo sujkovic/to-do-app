@@ -12,7 +12,29 @@ class Task {
         this.domElementWrapper = createDomElement('div', 'bodyTaskWrapper');
         this.domElementTitle = createDomElement('div', 'bodyTaskTitle', `${this.title}`);
         this.domElementDue = createDomElement('div', 'bodyTaskDue', `${this.due}`);
+        this.projectCheckBtn = createDomElement('button', 'projectCheckBtn');
         this.renderTrashcan();
+        if (this.complete === true) {
+            this.projectCheckBtn.classList.add('projectCheckBtnClicked');
+            this.domElementTitle.classList.add('taskComplete');
+        }
+        else if (this.complete === false) {
+            this.projectCheckBtn.classList.remove('projectCheckBtnClicked');
+            this.domElementTitle.classList.remove('taskComplete');
+        }
+        this.projectCheckBtn.addEventListener('click', () => {
+            if (this.complete === false) {
+                this.projectCheckBtn.classList.add('projectCheckBtnClicked');
+                this.domElementTitle.classList.add('taskComplete');
+                this.complete = true;
+            }
+            else if (this.complete === true) {
+                this.projectCheckBtn.classList.remove('projectCheckBtnClicked');
+                this.domElementTitle.classList.remove('taskComplete');
+                this.complete = false;
+            }
+        });
+        this.domElementWrapper.append(this.projectCheckBtn);
         this.domElementWrapper.append(this.domElementTitle);
         this.domElementWrapper.append(this.domElementDue);
         this.domElementWrapper.append(this.trashcan);

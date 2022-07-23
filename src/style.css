@@ -28,14 +28,40 @@ header {
     font-family: 'Pacifico', cursive;
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: space-between;
     gap: 12px;
     color: var(--font-main);
     background-color: var(--header-background);
 }
 
+header > * {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    flex: 1;
+}
+
+.middle {
+    padding-left: 32px;
+}
+
+.headerDate {
+    display: flex;
+    align-items: center;
+    justify-content: end;
+    padding-right: 32px;
+    padding-bottom: 9px;
+    font-size: 30px;
+}
+
 header img {
     filter: invert(100%) sepia(0%) saturate(7488%) hue-rotate(195deg) brightness(98%) contrast(103%);
+}
+
+.headerDate {
+    font-weight: 400;
+    align-self: flex-end;
 }
 
 .sidebar-body-wrapper {
@@ -75,6 +101,7 @@ header img {
 }
 
 .sidebarProject:hover {
+    transition: 250ms;
     cursor: pointer;
     font-size: 26px;
     color: rgb(198, 198, 198);
@@ -87,6 +114,7 @@ header img {
 
 .trashcanBtnActive {
     opacity: 1;
+    transition: 250ms;
     filter: invert(100%) sepia(0%) saturate(11%) hue-rotate(270deg) brightness(106%) contrast(103%);
 }
 
@@ -139,17 +167,35 @@ header img {
     gap: 10px;
     background-color: var(--task-background);
     color: var(--font-main);
-    border-radius: 12px;
+    border-radius: 16px;
     height: 36px;
+
+}
+
+.taskComplete {
+    color: rgb(187, 187, 187);
+    font-style: italic;
 }
 
 .bodyTaskWrapper:hover {
     background-color: var(--task-hover-background);
+    transition: 120ms;
 }
 
 .bodyTaskTitle {
     font-size: 22px;
     flex: 1;
+}
+
+.projectCheckBtn {
+    height: 16px;
+    width: 16px;
+    border-radius: 100px;
+    border: 1px solid white;
+}
+
+.projectCheckBtnClicked {
+    background-color: rgb(47, 47, 47);
 }
 
 .bodyProjectTitle {

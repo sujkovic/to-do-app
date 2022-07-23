@@ -75,9 +75,11 @@ class Project {
         this.addTaskBtn.addEventListener('click', () => {
             console.log(`length before adding: ${this.project.length}`);
             let myTask = new Task(prompt('Enter Task Title'), prompt('Enter due date'), prompt('Enter priority (1-3)'));
-            this.addTask(myTask);
-            this.unRenderBody();
-            this.renderToBody();
+            if (myTask.title !== '' && myTask.due !== '' && (myTask.priority === 1 || myTask.priority === 2 || myTask.priority === 3)) {
+                this.addTask(myTask);
+                this.unRenderBody();
+                this.renderToBody();
+            }
         }, false);
         document.querySelector('.body').append(this.addTaskBtn);
     }

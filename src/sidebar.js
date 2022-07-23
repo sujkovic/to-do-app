@@ -9,9 +9,11 @@ const sidebar = () => {
     let notebookWrapper = createDomElement('div', 'notebookWrapper');
     addProjectBtn.addEventListener('click', () => {
         let project = new Project(prompt('Enter project name'));
-        window.notebook.addProject(project);
-        window.notebook.unRenderSidebar();
-        window.notebook.renderToSidebar();
+        if (project.name !== null) {
+            window.notebook.addProject(project);
+            window.notebook.unRenderSidebar();
+            window.notebook.renderToSidebar();
+        }
     })
     sidebar.append(sidebarTitle);
     sidebar.append(notebookWrapper);
